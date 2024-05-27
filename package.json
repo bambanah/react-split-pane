@@ -1,8 +1,8 @@
 {
   "name": "react-split-pane",
   "description": "React split-pane component",
-  "main": "dist/react-split-main.js",
   "type": "module",
+  "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
@@ -31,8 +31,6 @@
     "inline-style-prefixer": "^4.0.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
@@ -48,13 +46,17 @@
     "mochify": "^4.0.0",
     "mochify-istanbul": "^2.4.2",
     "prettier": "^3.2.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sinon": "^5.0.7",
     "surge": "^0.19.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.1"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "scripts": {
     "build": "tsc && vite build",
