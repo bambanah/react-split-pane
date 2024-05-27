@@ -51,4 +51,20 @@ declare class SplitPane extends React.Component<Props, State> {
     static defaultProps: Props;
 }
 
-export { SplitPane as default };
+interface PaneProps {
+    children?: React.ReactNode;
+    innerRef?: () => void;
+    index?: number;
+    className?: string;
+    initialSize?: string | number;
+    minSize?: string;
+    maxSize?: string;
+}
+
+declare class Pane extends React.Component<PaneProps> {
+    constructor();
+
+    static defaultProps: PaneProps
+}
+
+export { SplitPane as default, Pane };
