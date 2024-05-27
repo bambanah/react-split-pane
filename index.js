@@ -1,3 +1,5 @@
-export { default as Pane } from "./lib/Pane";
+const SplitPane = require('./lib/SplitPane');
+const Pane = require('./lib/Pane');
 
-export { default } from "./lib/SplitPane";
+exports.Pane = Pane;
+exports["default"] = SplitPane;
