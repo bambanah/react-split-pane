@@ -37,7 +37,7 @@ function PaneStyle({ split, initialSize, size, minSize, maxSize, resizersSize })
 }
 
 
-export class Pane extends PureComponent {
+class Pane extends PureComponent {
   setRef = element => {
     this.props.innerRef(this.props.index, element);
   };
@@ -75,3 +75,4 @@ Pane.defaultProps = {
   maxSize: '100%',
 };
 
+export default Pane;
