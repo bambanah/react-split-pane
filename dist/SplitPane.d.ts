@@ -2,7 +2,7 @@ import { default as React } from 'react';
 export function getUnit(size: any): "px" | "%" | "ratio";
 export function convertSizeToCssValue(value: any, resizersSize: any): any;
 export default SplitPane;
-declare class SplitPane extends React.Component<any, any> {
+declare class SplitPane extends React.Component<any, any, any> {
     constructor(props: any);
     state: {
         sizes: string[];
@@ -42,7 +42,7 @@ declare class SplitPane extends React.Component<any, any> {
     setPaneRef: (idx: any, el: any) => void;
     paneElements: any[] | undefined;
     getResizersSize(children: any): number;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
     splitPane: any;
 }
 declare namespace SplitPane {

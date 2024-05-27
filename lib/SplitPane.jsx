@@ -1,7 +1,7 @@
 import React, { Component, cloneElement } from "react";
 import PropTypes from "prop-types";
 
-import glamorous from "glamorous";
+import styled from "styled-components";
 import Resizer from "./Resizer";
 import Pane from "./Pane";
 
@@ -9,7 +9,7 @@ const DEFAULT_PANE_SIZE = "1";
 const DEFAULT_PANE_MIN_SIZE = "0";
 const DEFAULT_PANE_MAX_SIZE = "100%";
 
-const ColumnStyle = glamorous.div({
+const ColumnStyle = styled.div({
   display: "flex",
   height: "100%",
   flexDirection: "column",
@@ -19,7 +19,7 @@ const ColumnStyle = glamorous.div({
   userSelect: "text",
 });
 
-const RowStyle = glamorous.div({
+const RowStyle = styled.div({
   display: "flex",
   height: "100%",
   flexDirection: "row",
@@ -192,7 +192,7 @@ class SplitPane extends Component {
     const maxSizes = this.getPanePropMinMaxSize(props, "maxSize");
 
     const resizersSize = this.getResizersSize(
-      removeNullChildren(this.props.children),
+      removeNullChildren(this.props.children)
     );
     const splitPaneSizePx =
       split === "vertical"
@@ -202,7 +202,7 @@ class SplitPane extends Component {
     const minSizesPx = minSizes.map((s) => convert(s, splitPaneSizePx));
     const maxSizesPx = maxSizes.map((s) => convert(s, splitPaneSizePx));
     const sizesPx = paneDimensions.map((d) =>
-      split === "vertical" ? d.width : d.height,
+      split === "vertical" ? d.width : d.height
     );
 
     return {
@@ -310,7 +310,7 @@ class SplitPane extends Component {
         sizes[resizerIndex + idx] = convertToUnit(
           paneSize,
           unit,
-          splitPaneSizePx,
+          splitPaneSizePx
         );
       } else {
         updateRatio = true;
@@ -416,14 +416,14 @@ class SplitPane extends Component {
 }
 
 SplitPane.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.arrayOf(PropTypes.node),
   className: PropTypes.string,
   split: PropTypes.oneOf(["vertical", "horizontal"]),
   resizerSize: PropTypes.number,
   onChange: PropTypes.func,
   onResizeStart: PropTypes.func,
   onResizeEnd: PropTypes.func,
-  allowResize: PropTypes.boolean,
+  allowResize: PropTypes.bool,
 };
 
 SplitPane.defaultProps = {
