@@ -1,3 +1,3 @@
-var SplitPane = require('./lib/SplitPane');
+export { default as Pane } from "./lib/Pane";
 
-module.exports = SplitPane;
+export { default } from "./lib/SplitPane";
