@@ -25,6 +25,7 @@ export interface Props {
     pane2Style?: React.CSSProperties;
     resizerClassName?: string;
     step?: number;
+    children?: React.ReactNode;
 }
 
 export interface State {
@@ -36,7 +37,7 @@ declare class SplitPane extends React.Component<Props, State> {
     constructor();
 
     onMouseDown(event: MouseEvent): void;
-    
+
     onTouchStart(event: TouchEvent): void;
 
     onMouseMove(event: MouseEvent): void;
