@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <main>
-      <SplitPane>
+      <SplitPane split="vertical" resizerSize={1} allowResize={true}>
         <Pane minSize={"200"}>
           <h2>Left Pane</h2>
         </Pane>

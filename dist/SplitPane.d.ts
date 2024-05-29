@@ -1,70 +1,51 @@
-import { default as React } from "react";
-import { default as PropTypes } from "prop-types";
-export function getUnit(size: any): "px" | "%" | "ratio";
-export function convertSizeToCssValue(value: any, resizersSize: any): any;
-export default SplitPane;
-declare class SplitPane extends React.Component<any, any, any> {
-  constructor(props: any);
-  splitPane: React.RefObject<any>;
-  state: {
+import { default as React, Component } from 'react';
+
+export declare function getUnit(size: string): "px" | "%" | "ratio";
+export declare function convertSizeToCssValue(value: string, resizersSize: number): string;
+interface SplitPaneProps {
+    children: any[];
+    className?: string;
+    split?: "vertical" | "horizontal";
+    resizerSize?: number;
+    onChange?: (sizes: string[]) => void;
+    onResizeStart?: () => void;
+    onResizeEnd?: (sizes: string[]) => void;
+    allowResize?: boolean;
+}
+interface SplitPaneState {
     sizes: string[];
-  };
-  componentWillReceiveProps(nextProps: any): void;
-  componentWillUnmount(): void;
-  onMouseDown: (event: any, resizerIndex: any) => void;
-  onTouchStart: (event: any, resizerIndex: any) => void;
-  onDown: (resizerIndex: any, clientX: any, clientY: any) => void;
-  resizerIndex: any;
-  dimensionsSnapshot:
-    | {
+}
+declare class SplitPane extends Component<SplitPaneProps, SplitPaneState> {
+    splitPane: React.RefObject<HTMLDivElement>;
+    paneElements: HTMLElement[];
+    resizerIndex: number;
+    dimensionsSnapshot: any;
+    startClientX: number;
+    startClientY: number;
+    constructor(props: SplitPaneProps);
+    componentWillReceiveProps(nextProps: SplitPaneProps): void;
+    componentWillUnmount(): void;
+    onMouseDown: (event: MouseEvent, resizerIndex: number) => void;
+    onTouchStart: (event: TouchEvent, resizerIndex: number) => void;
+    onDown: (resizerIndex: number, clientX: number, clientY: number) => void;
+    onMouseMove: (event: MouseEvent) => void;
+    onTouchMove: (event: TouchEvent) => void;
+    onMouseUp: (event: MouseEvent | TouchEvent) => void;
+    getDimensionsSnapshot(props: SplitPaneProps): {
         resizersSize: number;
-        paneDimensions: any[];
+        paneDimensions: DOMRect[];
         splitPaneSizePx: number;
-        minSizesPx: number[];
-        maxSizesPx: number[];
-        sizesPx: any[];
-      }
-    | undefined;
-  startClientX: any;
-  startClientY: any;
-  onMouseMove: (event: any) => void;
-  onTouchMove: (event: any) => void;
-  onMouseUp: (event: any) => void;
-  getDimensionsSnapshot(props: any): {
-    resizersSize: number;
-    paneDimensions: any[];
-    splitPaneSizePx: number;
-    minSizesPx: number[];
-    maxSizesPx: number[];
-    sizesPx: any[];
-  };
-  getPanePropSize(props: any): string[];
-  getPanePropMinMaxSize(props: any, key: any): any[];
-  getPaneDimensions(): any[];
-  getSizes(): string[];
-  onMove(clientX: any, clientY: any): void;
-  setPaneRef: (idx: any, el: any) => void;
-  paneElements: any[] | undefined;
-  getResizersSize(children: any): number;
-  render(): JSX.Element;
+        minSizesPx: (number | undefined)[];
+        maxSizesPx: (number | undefined)[];
+        sizesPx: number[];
+    } | undefined;
+    getPanePropSize(props: SplitPaneProps): string[];
+    getPanePropMinMaxSize(props: SplitPaneProps, key: "minSize" | "maxSize"): any[];
+    getPaneDimensions(): DOMRect[];
+    getSizes(): string[];
+    onMove(clientX: number, clientY: number): void;
+    setPaneRef: (idx: number, el: HTMLDivElement) => void;
+    getResizersSize(children: SplitPaneProps["children"]): number;
+    render(): JSX.Element;
 }
-declare namespace SplitPane {
-  namespace propTypes {
-    let children: PropTypes.Requireable<PropTypes.ReactNodeLike[]>;
-    let className: PropTypes.Requireable<string>;
-    let split: PropTypes.Requireable<string>;
-    let resizerSize: PropTypes.Requireable<number>;
-    let onChange: PropTypes.Requireable<(...args: any[]) => any>;
-    let onResizeStart: PropTypes.Requireable<(...args: any[]) => any>;
-    let onResizeEnd: PropTypes.Requireable<(...args: any[]) => any>;
-    let allowResize: PropTypes.Requireable<boolean>;
-  }
-  namespace defaultProps {
-    let split_1: string;
-    export { split_1 as split };
-    let resizerSize_1: number;
-    export { resizerSize_1 as resizerSize };
-    let allowResize_1: boolean;
-    export { allowResize_1 as allowResize };
-  }
-}
+export default SplitPane;
