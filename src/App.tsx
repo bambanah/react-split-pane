@@ -5,7 +5,7 @@ function App() {
   return (
     <main>
       <SplitPane>
-        <Pane>
+        <Pane minSize={"200"}>
           <h2>Left Pane</h2>
         </Pane>
         <Pane>

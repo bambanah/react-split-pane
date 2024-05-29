@@ -1,8 +1,8 @@
 var On = Object.defineProperty;
 var Cn = (e, t, r) => t in e ? On(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
 var ce = (e, t, r) => (Cn(e, typeof t != "symbol" ? t + "" : t, r), r);
-import { jsx as we } from "react/jsx-runtime";
-import xe, { useRef as Tn, useDebugValue as Ht, createElement as _n, useContext as Rn, Component as jr, cloneElement as An, PureComponent as zn } from "react";
+import { jsx as xe } from "react/jsx-runtime";
+import be, { useRef as Tn, useDebugValue as Ht, createElement as _n, useContext as Rn, Component as jr, cloneElement as An, PureComponent as zn } from "react";
 function Mt(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
@@ -1409,7 +1409,7 @@ function nt(e, t, r, n, o, i, a, s) {
 function pe(e, t) {
   return kt(nt("", null, null, "", null, null, 0, e.siblings), e, { length: -e.length }, t);
 }
-function Se(e) {
+function we(e) {
   for (; e.root; )
     e = pe(e.root, { children: [e] });
   Me(e, e.siblings);
@@ -1811,10 +1811,10 @@ function ea(e, t, r, n) {
             switch (ue(o, n = /(::plac\w+|:read-\w+)/)) {
               case ":read-only":
               case ":read-write":
-                Se(pe(e, { props: [_(o, /:(read-\w+)/, ":" + Ie + "$1")] })), Se(pe(e, { props: [o] })), kt(e, { props: br(r, n) });
+                we(pe(e, { props: [_(o, /:(read-\w+)/, ":" + Ie + "$1")] })), we(pe(e, { props: [o] })), kt(e, { props: br(r, n) });
                 break;
               case "::placeholder":
-                Se(pe(e, { props: [_(o, /:(plac\w+)/, ":" + j + "input-$1")] })), Se(pe(e, { props: [_(o, /:(plac\w+)/, ":" + Ie + "$1")] })), Se(pe(e, { props: [_(o, /:(plac\w+)/, B + "input-$1")] })), Se(pe(e, { props: [o] })), kt(e, { props: br(r, n) });
+                we(pe(e, { props: [_(o, /:(plac\w+)/, ":" + j + "input-$1")] })), we(pe(e, { props: [_(o, /:(plac\w+)/, ":" + Ie + "$1")] })), we(pe(e, { props: [_(o, /:(plac\w+)/, B + "input-$1")] })), we(pe(e, { props: [o] })), kt(e, { props: br(r, n) });
                 break;
             }
             return "";
@@ -1869,7 +1869,7 @@ var ta = {
   strokeMiterlimit: 1,
   strokeOpacity: 1,
   strokeWidth: 1
-}, be = typeof process < "u" && process.env !== void 0 && (process.env.REACT_APP_SC_ATTR || process.env.SC_ATTR) || "data-styled", sn = "active", cn = "data-styled-version", it = "6.1.11", Ft = `/*!sc*/
+}, Se = typeof process < "u" && process.env !== void 0 && (process.env.REACT_APP_SC_ATTR || process.env.SC_ATTR) || "data-styled", sn = "active", cn = "data-styled-version", it = "6.1.11", Ft = `/*!sc*/
 `, Yt = typeof window < "u" && "HTMLElement" in window, ra = !!(typeof SC_DISABLE_SPEEDY == "boolean" ? SC_DISABLE_SPEEDY : typeof process < "u" && process.env !== void 0 && process.env.REACT_APP_SC_DISABLE_SPEEDY !== void 0 && process.env.REACT_APP_SC_DISABLE_SPEEDY !== "" ? process.env.REACT_APP_SC_DISABLE_SPEEDY !== "false" && process.env.REACT_APP_SC_DISABLE_SPEEDY : typeof process < "u" && process.env !== void 0 && process.env.SC_DISABLE_SPEEDY !== void 0 && process.env.SC_DISABLE_SPEEDY !== "" ? process.env.SC_DISABLE_SPEEDY !== "false" && process.env.SC_DISABLE_SPEEDY : process.env.NODE_ENV !== "production"), xr = /invalid hook call/i, Be = /* @__PURE__ */ new Set(), na = function(e, t) {
   if (process.env.NODE_ENV !== "production") {
     var r = t ? ' with the id of "'.concat(t, '"') : "", n = "The component ".concat(e).concat(r, ` has been created dynamically.
@@ -2082,7 +2082,7 @@ var ba = function() {
   return Xe.set(e, t), Je.set(t, e), t;
 }, wa = function(e, t) {
   Ze = t + 1, Xe.set(e, t), Je.set(t, e);
-}, xa = "style[".concat(be, "][").concat(cn, '="').concat(it, '"]'), Ea = new RegExp("^".concat(be, '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)')), Pa = function(e, t, r) {
+}, xa = "style[".concat(Se, "][").concat(cn, '="').concat(it, '"]'), Ea = new RegExp("^".concat(Se, '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)')), Pa = function(e, t, r) {
   for (var n, o = r.split(","), i = 0, a = o.length; i < a; i++)
     (n = o[i]) && e.registerName(t, n);
 }, ka = function(e, t) {
@@ -2103,10 +2103,10 @@ function Oa() {
 }
 var yn = function(e) {
   var t = document.head, r = e || t, n = document.createElement("style"), o = function(s) {
-    var c = Array.from(s.querySelectorAll("style[".concat(be, "]")));
+    var c = Array.from(s.querySelectorAll("style[".concat(Se, "]")));
     return c[c.length - 1];
   }(r), i = o !== void 0 ? o.nextSibling : null;
-  n.setAttribute(be, sn), n.setAttribute(cn, it);
+  n.setAttribute(Se, sn), n.setAttribute(cn, it);
   var a = Oa();
   return a && n.setAttribute("nonce", a), r.insertBefore(n, i), n;
 }, Ca = function() {
@@ -2167,7 +2167,7 @@ var yn = function(e) {
     this.options = X(X({}, Ra), t), this.gs = r, this.names = new Map(n), this.server = !!t.isServer, !this.server && Yt && _r && (_r = !1, function(i) {
       for (var a = document.querySelectorAll(xa), s = 0, c = a.length; s < c; s++) {
         var u = a[s];
-        u && u.getAttribute(be) !== sn && (ka(i, u), u.parentNode && u.parentNode.removeChild(u));
+        u && u.getAttribute(Se) !== sn && (ka(i, u), u.parentNode && u.parentNode.removeChild(u));
       }
     }(this)), qt(this, function() {
       return function(i) {
@@ -2180,7 +2180,7 @@ var yn = function(e) {
           var g = i.names.get(y), P = a.getGroup(h);
           if (g === void 0 || P.length === 0)
             return "continue";
-          var b = "".concat(be, ".g").concat(h, '[id="').concat(y, '"]'), I = "";
+          var b = "".concat(Se, ".g").concat(h, '[id="').concat(y, '"]'), I = "";
           g !== void 0 && g.forEach(function(A) {
             A.length > 0 && (I += "".concat(A, ","));
           }), c += "".concat(P).concat(b, '{content:"').concat(I, '"}').concat(Ft);
@@ -2248,9 +2248,9 @@ function Ma(e) {
     return g.name || Re(15), me(y, g.name);
   }, un).toString() : "", h;
 }
-var Ia = new gn(), At = Ma(), bn = xe.createContext({ shouldForwardProp: void 0, styleSheet: Ia, stylis: At });
+var Ia = new gn(), At = Ma(), bn = be.createContext({ shouldForwardProp: void 0, styleSheet: Ia, stylis: At });
 bn.Consumer;
-xe.createContext(void 0);
+be.createContext(void 0);
 function Rr() {
   return Rn(bn);
 }
@@ -2348,7 +2348,7 @@ var Wa = fn(it), Na = function() {
     }
     return o;
   }, e;
-}(), xn = xe.createContext(void 0);
+}(), xn = be.createContext(void 0);
 xn.Consumer;
 var St = {}, Mr = /* @__PURE__ */ new Set();
 function ja(e, t, r) {
@@ -2373,7 +2373,7 @@ function ja(e, t, r) {
   var A = new Na(r, y, n ? o.componentStyle : void 0);
   function D(E, f) {
     return function(v, w, V) {
-      var q = v.attrs, fe = v.componentStyle, ee = v.defaultProps, te = v.foldedComponentIds, K = v.styledComponentId, re = v.target, ze = xe.useContext(xn), J = Rr(), ne = v.shouldForwardProp || J.shouldForwardProp;
+      var q = v.attrs, fe = v.componentStyle, ee = v.defaultProps, te = v.foldedComponentIds, K = v.styledComponentId, re = v.target, ze = be.useContext(xn), J = Rr(), ne = v.shouldForwardProp || J.shouldForwardProp;
       process.env.NODE_ENV !== "production" && Ht(K);
       var he = oa(w, ze, ee) || Oe, Z = function(z, O, C) {
         for (var R, M = X(X({}, O), { className: void 0, theme: C }), $ = 0; $ < z.length; $ += 1) {
@@ -2395,7 +2395,7 @@ function ja(e, t, r) {
     }(x, E, f);
   }
   D.displayName = h;
-  var x = xe.forwardRef(D);
+  var x = be.forwardRef(D);
   return x.attrs = g, x.componentStyle = A, x.displayName = h, x.shouldForwardProp = P, x.foldedComponentIds = n ? ye(o.foldedComponentIds, o.styledComponentId) : "", x.styledComponentId = y, x.target = n ? o.target : e, Object.defineProperty(x, "defaultProps", { get: function() {
     return this._foldedDefaultProps;
   }, set: function(E) {
@@ -2466,7 +2466,7 @@ Tt.forEach(function(e) {
 process.env.NODE_ENV !== "production" && typeof navigator < "u" && navigator.product === "ReactNative" && console.warn(`It looks like you've imported 'styled-components' on React Native.
 Perhaps you're looking to import 'styled-components/native'?
 Read more about this at https://www.styled-components.com/docs/basics#react-native`);
-var Ye = "__sc-".concat(be, "__");
+var Ye = "__sc-".concat(Se, "__");
 process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && typeof window < "u" && (window[Ye] || (window[Ye] = 0), window[Ye] === 1 && console.warn(`It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.
 
 See https://s-c.sh/2BAXzed for more info.`), window[Ye] += 1);
@@ -2550,7 +2550,7 @@ class Ya extends jr {
         o && (u.preventDefault(), o(u, t));
       }
     };
-    return r === "vertical" ? /* @__PURE__ */ we(Fa, { ...c }) : /* @__PURE__ */ we(La, { ...c });
+    return r === "vertical" ? /* @__PURE__ */ xe(Fa, { ...c }) : /* @__PURE__ */ xe(La, { ...c });
   }
 }
 const Ua = "1", qa = "0", Ga = "100%", Va = Ae.div({
@@ -2583,7 +2583,7 @@ function Xa(e, t, r = "px") {
   }
 }
 function Ue(e) {
-  return xe.Children.toArray(e).filter((t) => t);
+  return be.Children.toArray(e).filter((t) => t);
 }
 function Qe(e) {
   return e.endsWith("px") ? "px" : e.endsWith("%") ? "%" : "ratio";
@@ -2633,7 +2633,7 @@ class kn extends jr {
     ce(this, "setPaneRef", (r, n) => {
       this.paneElements || (this.paneElements = []), this.paneElements[r] = n;
     });
-    this.state = {
+    this.splitPane = be.createRef(), this.state = {
       sizes: this.getPanePropSize(r)
     };
   }
@@ -2644,7 +2644,7 @@ class kn extends jr {
     document.removeEventListener("mouseup", this.onMouseUp), document.removeEventListener("mousemove", this.onMouseMove), document.removeEventListener("touchmove", this.onTouchMove), document.removeEventListener("touchend", this.onMouseUp);
   }
   getDimensionsSnapshot(r) {
-    const n = r.split, o = this.getPaneDimensions(), i = this.splitPane.getBoundingClientRect(), a = this.getPanePropMinMaxSize(r, "minSize"), s = this.getPanePropMinMaxSize(r, "maxSize"), c = this.getResizersSize(
+    const n = r.split, o = this.getPaneDimensions(), i = this.splitPane.current.getBoundingClientRect(), a = this.getPanePropMinMaxSize(r, "minSize"), s = this.getPanePropMinMaxSize(r, "maxSize"), c = this.getResizersSize(
       Ue(this.props.children)
     ), u = n === "vertical" ? i.width - c : i.height - c, d = a.map((g) => Dr(g, u)), h = s.map((g) => Dr(g, u)), y = o.map(
       (g) => n === "vertical" ? g.width : g.height
@@ -2707,14 +2707,14 @@ class kn extends jr {
         "data-type": "Pane",
         split: o,
         key: `Pane-${y}`,
-        innerRef: this.setPaneRef,
+        setRef: this.setPaneRef,
         resizersSize: s,
         size: a[y]
       };
-      if (b ? g = An(h, I) : g = /* @__PURE__ */ we(Nr, { ...I, children: h }), d.length === 0)
+      if (b ? g = An(h, I) : g = /* @__PURE__ */ xe(Nr, { ...I, children: h }), d.length === 0)
         return [...d, g];
       {
-        const A = /* @__PURE__ */ we(
+        const A = /* @__PURE__ */ xe(
           Ya,
           {
             index: P,
@@ -2727,15 +2727,13 @@ class kn extends jr {
         return [...d, A, g];
       }
     }, []);
-    return /* @__PURE__ */ we(
+    return /* @__PURE__ */ xe(
       o === "vertical" ? Ha : Va,
       {
         className: n,
         "data-type": "SplitPane",
         "data-split": o,
-        innerRef: (d) => {
-          this.splitPane = d;
-        },
+        ref: this.splitPane,
         children: c
       }
     );
@@ -2788,17 +2786,17 @@ class Gt extends zn {
   constructor() {
     super(...arguments);
     ce(this, "setRef", (r) => {
-      this.props.innerRef(this.props.index, r);
+      this.props.setRef(this.props.index, r);
     });
   }
   render() {
     const { children: r, className: n } = this.props, o = Mi(Za(this.props));
-    return /* @__PURE__ */ we("div", { className: n, style: o, ref: this.setRef, children: r });
+    return /* @__PURE__ */ xe("div", { className: n, style: o, ref: this.setRef, children: r });
   }
 }
 Gt.propTypes = {
   children: U.node,
-  innerRef: U.func,
+  setRef: U.func,
   index: U.number,
   className: U.string,
   initialSize: U.oneOfType([U.string, U.number]),
@@ -2815,5 +2813,6 @@ Gt.defaultProps = {
 const Nr = Gt;
 export {
   Nr as Pane,
+  Ya as Resizer,
   kn as default
 };

@@ -3,6 +3,6 @@ export default Resizer;
 declare class Resizer extends React.Component<any, any, any> {
     constructor(props: any);
     constructor(props: any, context: any);
-    render(): import("react/jsx-runtime").JSX.Element;
+    render(): JSX.Element;
     resizer: any;
 }

@@ -1,21 +1,22 @@
 import { default as React } from 'react';
+import { default as PropTypes } from 'prop-types';
 export default Pane;
 declare class Pane extends React.PureComponent<any, any, any> {
     constructor(props: any);
     constructor(props: any, context: any);
     setRef: (element: any) => void;
-    render(): import("react/jsx-runtime").JSX.Element;
+    render(): JSX.Element;
 }
 declare namespace Pane {
     namespace propTypes {
-        let children: any;
-        let innerRef: any;
-        let index: any;
-        let className: any;
-        let initialSize: any;
-        let minSize: any;
-        let maxSize: any;
-        let split: any;
+        let children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        let setRef: PropTypes.Requireable<(...args: any[]) => any>;
+        let index: PropTypes.Requireable<number>;
+        let className: PropTypes.Requireable<string>;
+        let initialSize: PropTypes.Requireable<NonNullable<string | number | null | undefined>>;
+        let minSize: PropTypes.Requireable<string>;
+        let maxSize: PropTypes.Requireable<string>;
+        let split: PropTypes.Requireable<string>;
     }
     namespace defaultProps {
         let initialSize_1: string;

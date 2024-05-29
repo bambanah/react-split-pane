@@ -96,6 +96,8 @@ class SplitPane extends Component {
   constructor(props) {
     super(props);
 
+    this.splitPane = React.createRef();
+
     this.state = {
       sizes: this.getPanePropSize(props),
     };
@@ -187,7 +189,7 @@ class SplitPane extends Component {
   getDimensionsSnapshot(props) {
     const split = props.split;
     const paneDimensions = this.getPaneDimensions();
-    const splitPaneDimensions = this.splitPane.getBoundingClientRect();
+    const splitPaneDimensions = this.splitPane.current.getBoundingClientRect();
     const minSizes = this.getPanePropMinMaxSize(props, "minSize");
     const maxSizes = this.getPanePropMinMaxSize(props, "maxSize");
 
@@ -370,7 +372,7 @@ class SplitPane extends Component {
         "data-type": "Pane",
         split: split,
         key: `Pane-${idx}`,
-        innerRef: this.setPaneRef,
+        setRef: this.setPaneRef,
         resizersSize,
         size: sizes[idx],
       };
@@ -405,9 +407,7 @@ class SplitPane extends Component {
         className={className}
         data-type="SplitPane"
         data-split={split}
-        innerRef={(el) => {
-          this.splitPane = el;
-        }}
+        ref={this.splitPane}
       >
         {elements}
       </StyleComponent>

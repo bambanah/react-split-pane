@@ -45,7 +45,7 @@ function PaneStyle({
 
 class Pane extends PureComponent {
   setRef = (element) => {
-    this.props.innerRef(this.props.index, element);
+    this.props.setRef(this.props.index, element);
   };
 
   render() {
@@ -62,7 +62,7 @@ class Pane extends PureComponent {
 
 Pane.propTypes = {
   children: PropTypes.node,
-  innerRef: PropTypes.func,
+  setRef: PropTypes.func,
   index: PropTypes.number,
   className: PropTypes.string,
   initialSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
