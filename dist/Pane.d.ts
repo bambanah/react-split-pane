@@ -1,4 +1,4 @@
-import { default as React, PureComponent } from 'react';
+import { default as React } from 'react';
 
 export interface PaneProps {
     children: React.ReactNode | React.ReactNode[];
@@ -12,8 +12,5 @@ export interface PaneProps {
     resizersSize?: number;
     size?: string;
 }
-declare class Pane extends PureComponent<PaneProps> {
-    setRef: (element: HTMLDivElement) => void;
-    render(): JSX.Element;
-}
+declare const Pane: ({ children, className, setRef, index, ...rest }: PaneProps) => JSX.Element;
 export default Pane;

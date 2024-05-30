@@ -1,14 +1,15 @@
-import SplitPane, { Pane } from "../";
+import SplitPane from "../lib/SplitPane";
 import "./App.css";
+import Pane from "../lib/Pane";
 
 function App() {
   return (
     <main>
-      <SplitPane split="vertical" resizerSize={1} allowResize={true}>
-        <Pane minSize={"200"}>
+      <SplitPane split="horizontal">
+        <Pane minSize={"20rem"}>
           <h2>Left Pane</h2>
         </Pane>
-        <Pane>
+        <Pane minSize="200">
           <h2>Right Pane</h2>
         </Pane>
       </SplitPane>

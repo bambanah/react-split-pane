@@ -1,8 +1,6 @@
-import React, { PureComponent } from "react";
-
 import { prefix } from "inline-style-prefixer";
-
-import { getUnit, convertSizeToCssValue } from "./SplitPane";
+import React from "react";
+import { convertSizeToCssValue, getUnit } from "./utils";
 
 export interface PaneProps {
   children: React.ReactNode | React.ReactNode[];
@@ -25,7 +23,7 @@ function PaneStyle({
   maxSize = "100%",
   resizersSize = 1,
 }: PaneProps) {
-  const value = size || initialSize;
+  const value = size ?? initialSize;
   const vertical = split === "vertical";
   const styleProp = {
     minSize: vertical ? "minWidth" : "minHeight",
@@ -58,21 +56,20 @@ function PaneStyle({
   return style;
 }
 
-class Pane extends PureComponent<PaneProps> {
-  setRef = (element: HTMLDivElement) => {
-    this.props.setRef?.(this.props.index ?? 0, element);
+const Pane = ({ children, className, setRef, index, ...rest }: PaneProps) => {
+  const prefixedStyle = prefix(PaneStyle({ children, ...rest }));
+
+  const setPaneRef = (element: HTMLDivElement) => {
+    if (!setRef || index === undefined) return;
+
+    setRef(index, element);
   };
 
-  render() {
-    const { children, className } = this.props;
-    const prefixedStyle = prefix(PaneStyle(this.props));
-
-    return (
-      <div className={className} style={prefixedStyle} ref={this.setRef}>
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={className} style={prefixedStyle} ref={setPaneRef}>
+      {children}
+    </div>
+  );
+};
 
 export default Pane;

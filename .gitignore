@@ -30,7 +30,7 @@ node_modules
 
 .idea
 *.iml
-# /lib
+# dist/
 
 lcov.info
 .DS_Store

@@ -1,8 +1,8 @@
 import { default as React } from 'react';
-export default Resizer;
-declare class Resizer extends React.Component<any, any, any> {
-    constructor(props: any);
-    constructor(props: any, context: any);
-    render(): JSX.Element;
-    resizer: any;
+
+interface ResizerProps extends React.HTMLAttributes<HTMLDivElement> {
+    index: number;
+    split: "vertical" | "horizontal";
 }
+declare const Resizer: ({ index, split, ...rest }: ResizerProps) => JSX.Element;
+export default Resizer;
