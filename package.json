@@ -63,16 +63,10 @@
     "react-dom": "^16.14.0"
   },
   "scripts": {
-    "build": "tsc --p ./tsconfig-build.json && vite build --watch",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "build:watch": "pnpm build --watch",
     "dev": "vite",
-    "compile": "babel src -d lib",
-    "compile:watch": "babel -w -d lib/ src/",
-    "test": "npm run compile && mochify -R spec",
-    "test:watch": "npm run compile:watch & mochify -R spec --watch",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write './{src,test}/**/*.js'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "release:patch": "npm test && npm version patch && git push && npm publish --tag next"
+    "prettier": "prettier --single-quote --trailing-comma es5 --write './{src,test}/**/*.js'"
   },
   "packageManager": "pnpm@9.1.2+sha512.127dc83b9ea10c32be65d22a8efb4a65fb952e8fefbdfded39bdc3c97efc32d31b48b00420df2c1187ace28c921c902f0cb5a134a4d032b8b5295cbfa2c681e2"
 }

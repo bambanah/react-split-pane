@@ -5,12 +5,15 @@ import Pane from "../lib/Pane";
 function App() {
   return (
     <main>
-      <SplitPane split="horizontal">
+      <SplitPane split="vertical">
         <Pane minSize={"20rem"}>
-          <h2>Left Pane</h2>
+          <h2>First Pane</h2>
         </Pane>
         <Pane minSize="200">
-          <h2>Right Pane</h2>
+          <h2>Second Pane</h2>
+        </Pane>
+        <Pane minSize="200">
+          <h2>Third Pane</h2>
         </Pane>
       </SplitPane>
     </main>

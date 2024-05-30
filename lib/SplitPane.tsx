@@ -145,14 +145,7 @@ const SplitPane = ({
   };
 
   function onMove(clientX: number, clientY: number) {
-    console.log(window.innerHeight, clientY);
-    if (
-      !dimensionsSnapshot.current ||
-      (split === "vertical" && (clientX >= window.innerWidth || clientX < 0)) ||
-      (split === "horizontal" && (clientY >= window.innerHeight || clientY < 0))
-    ) {
-      return;
-    }
+    if (!dimensionsSnapshot.current) return;
 
     const { sizesPx, minSizesPx, maxSizesPx, splitPaneSizePx, paneDimensions } =
       dimensionsSnapshot.current;
@@ -160,10 +153,10 @@ const SplitPane = ({
     const sizeDim = split === "vertical" ? "width" : "height";
     const currResizerIndex = resizerIndex.current;
 
-    const primary = paneDimensions[currResizerIndex];
-    const secondary = paneDimensions[currResizerIndex + 1];
+    const primaryDimensions = paneDimensions[currResizerIndex];
+    const secondaryDimensions = paneDimensions[currResizerIndex + 1];
 
-    const maxSize = primary[sizeDim] + secondary[sizeDim];
+    const maxSize = primaryDimensions[sizeDim] + secondaryDimensions[sizeDim];
 
     const primaryMinSizePx = minSizesPx[currResizerIndex];
     const secondaryMinSizePx = minSizesPx[currResizerIndex + 1];
@@ -173,50 +166,31 @@ const SplitPane = ({
       maxSize
     );
 
-    const moveOffset =
+    const moveOffsetPx =
       split === "vertical"
         ? startClientX.current - clientX
         : startClientY.current - clientY;
 
-    let primarySizePx = primary[sizeDim] - moveOffset;
-    let secondarySizePx = secondary[sizeDim] + moveOffset;
+    let newPrimarySizePx = primaryDimensions[sizeDim] - moveOffsetPx;
+    let newSecondarySizePx = secondaryDimensions[sizeDim] + moveOffsetPx;
 
-    let primaryHasReachedLimit = false;
-    let secondaryHasReachedLimit = false;
-
-    if (primarySizePx < primaryMinSizePx) {
-      primarySizePx = primaryMinSizePx;
-      primaryHasReachedLimit = true;
-      return;
-    } else if (primarySizePx > primaryMaxSizePx) {
-      primarySizePx = primaryMaxSizePx;
-      primaryHasReachedLimit = true;
+    if (
+      newPrimarySizePx < primaryMinSizePx ||
+      newPrimarySizePx > primaryMaxSizePx ||
+      newSecondarySizePx < secondaryMinSizePx ||
+      newSecondarySizePx > secondaryMaxSizePx
+    ) {
+      // If any of the new sizes are out of bounds, abort updating
       return;
     }
 
-    if (secondarySizePx < secondaryMinSizePx) {
-      secondarySizePx = secondaryMinSizePx;
-      secondaryHasReachedLimit = true;
-      return;
-    } else if (secondarySizePx > secondaryMaxSizePx) {
-      secondarySizePx = secondaryMaxSizePx;
-      secondaryHasReachedLimit = true;
-      return;
-    }
-
-    if (primaryHasReachedLimit) {
-      secondarySizePx = primary[sizeDim] + secondary[sizeDim] - primarySizePx;
-    } else if (secondaryHasReachedLimit) {
-      primarySizePx = primary[sizeDim] + secondary[sizeDim] - secondarySizePx;
-    }
-
-    sizesPx[currResizerIndex] = primarySizePx;
-    sizesPx[currResizerIndex + 1] = secondarySizePx;
+    sizesPx[currResizerIndex] = newPrimarySizePx;
+    sizesPx[currResizerIndex + 1] = newSecondarySizePx;
 
     let newSizes = sizes.concat();
     let updateRatio;
 
-    [primarySizePx, secondarySizePx].forEach((paneSize, idx) => {
+    [newPrimarySizePx, newSecondarySizePx].forEach((paneSize, idx) => {
       const unit = getUnit(newSizes[currResizerIndex + idx]);
       if (unit !== "ratio") {
         newSizes[currResizerIndex + idx] = convertToUnit(
@@ -248,8 +222,8 @@ const SplitPane = ({
       }
     }
 
-    onChange?.(newSizes);
     setSizes(newSizes);
+    onChange?.(newSizes);
   }
 
   function updateDimensionsSnapshot() {
@@ -300,7 +274,7 @@ const SplitPane = ({
   function getPanePropMinMaxSize(
     children: SplitPaneProps["children"],
     key: "minSize" | "maxSize"
-  ) {
+  ): string[] {
     return removeNullChildren(children).map((child) => {
       const value = child.props[key];
       if (value === undefined) {

@@ -1,9 +1,19 @@
 import React from "react";
 import { SplitPaneProps } from "./SplitPane";
 
-export function getUnit(size: string) {
+type Unit = "%" | "px" | "ratio" | "em" | "rem";
+
+export function getUnit(size: string): Unit {
   if (size.endsWith("px")) {
     return "px";
+  }
+
+  if (size.endsWith("rem")) {
+    return "rem";
+  }
+
+  if (size.endsWith("em")) {
+    return "em";
   }
 
   if (size.endsWith("%")) {
@@ -32,19 +42,23 @@ export function convertSizeToCssValue(value: string, resizersSize: number) {
 }
 
 export function convert(str: string, size: number) {
-  const tokens = str.match(/([0-9]+)([px|%]*)/) as RegExpMatchArray;
+  const tokens = RegExp(/(\d+)(px|em|rem|%)?/).exec(str);
+  if (!tokens) return 0;
 
   const value = tokens[1];
-  const unit = tokens[2];
+  const unit = tokens[2] as Unit;
 
   return toPx(parseInt(value), size, unit);
 }
 
-export function toPx(value: number, size: number, unit = "px") {
+export function toPx(value: number, size: number, unit: Unit = "px") {
   switch (unit) {
-    case "%": {
+    case "%":
       return +((size * value) / 100).toFixed(2);
-    }
+    case "em":
+      return +(value * 16).toFixed(2);
+    case "rem":
+      return +(value * 16).toFixed(2);
     default: {
       return +value;
     }
@@ -59,7 +73,7 @@ export function removeNullChildren(
 
 export function convertToUnit(
   size: number,
-  unit: "%" | "px" | "ratio",
+  unit: "%" | "px" | "ratio" | "em" | "rem",
   containerSize?: number
 ) {
   switch (unit) {
@@ -67,6 +81,10 @@ export function convertToUnit(
       return `${((size / (containerSize ?? 0)) * 100).toFixed(2)}%`;
     case "px":
       return `${size.toFixed(2)}px`;
+    case "em":
+      return `${size.toFixed(2)}em`;
+    case "rem":
+      return `${size.toFixed(2)}rem`;
     case "ratio":
       return (size * 100).toFixed(0);
   }
