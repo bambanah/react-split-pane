@@ -69,6 +69,7 @@ const Resizer = ({ index, split = "vertical", ...rest }: ResizerProps) => {
     "data-attribute": split,
     "data-type": "Resizer",
     ref: resizer,
+    className: "react-split-pane__Resizer",
     ...rest,
   };
 

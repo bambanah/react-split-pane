@@ -65,9 +65,7 @@ export function toPx(value: number, size: number, unit: Unit = "px") {
   }
 }
 
-export function removeNullChildren(
-  children: SplitPaneProps["children"]
-): any[] {
+export function removeNullChildren(children: SplitPaneProps["children"]) {
   return React.Children.toArray(children).filter((c) => c);
 }
 

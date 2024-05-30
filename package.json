@@ -44,6 +44,7 @@
     "@vitejs/plugin-react": "^4.3.0",
     "chai": "^4.1.2",
     "chai-spies": "^0.7.1",
+    "clsx": "^2.1.1",
     "concurrently": "^8.2.2",
     "core-js": "^2.5.3",
     "express": "^4.16.2",
@@ -63,7 +64,7 @@
     "react-dom": "^16.14.0"
   },
   "scripts": {
-    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "build": "vite build",
     "build:watch": "pnpm build --watch",
     "dev": "vite",
     "prettier": "prettier --single-quote --trailing-comma es5 --write './{src,test}/**/*.js'"

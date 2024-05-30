@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Pane from "./Pane";
 import Resizer from "./Resizer";
 import { convert, convertToUnit, getUnit, removeNullChildren } from "./utils";
+import { clsx } from "clsx";
 
 const DEFAULT_PANE_SIZE = "1";
 const DEFAULT_PANE_MIN_SIZE = "0";
@@ -343,13 +344,13 @@ const SplitPane = ({
 
       return [...acc, resizer, pane];
     }
-  }, []);
+  }, [] as React.ReactNode[]);
 
   const StyleComponent = split === "vertical" ? RowStyle : ColumnStyle;
 
   return (
     <StyleComponent
-      className={className}
+      className={clsx(className, "react-split-pane__SplitPane")}
       data-type="SplitPane"
       data-split={split}
       ref={splitPaneRef}

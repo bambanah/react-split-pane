@@ -7,7 +7,9 @@ function App() {
     <main>
       <SplitPane split="vertical">
         <Pane minSize={"20rem"}>
-          <h2>First Pane</h2>
+          <div>
+            <h2>First Pane</h2>
+          </div>
         </Pane>
         <Pane minSize="200">
           <h2>Second Pane</h2>

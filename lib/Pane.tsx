@@ -1,6 +1,7 @@
 import { prefix } from "inline-style-prefixer";
 import React from "react";
-import { convertSizeToCssValue, getUnit } from "./utils";
+import { convert, convertSizeToCssValue, getUnit } from "./utils";
+import clsx from "clsx";
 
 export interface PaneProps {
   children: React.ReactNode | React.ReactNode[];
@@ -66,7 +67,11 @@ const Pane = ({ children, className, setRef, index, ...rest }: PaneProps) => {
   };
 
   return (
-    <div className={className} style={prefixedStyle} ref={setPaneRef}>
+    <div
+      className={clsx(className, "react-split-pane__Pane")}
+      style={prefixedStyle}
+      ref={setPaneRef}
+    >
       {children}
     </div>
   );
