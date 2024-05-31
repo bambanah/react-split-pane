@@ -65,14 +65,16 @@ export function toPx(value: number, size: number, unit: Unit = "px") {
   }
 }
 
-export function removeNullChildren(children: SplitPaneProps["children"]) {
+export function removeNullChildren(
+  children: SplitPaneProps["children"]
+): any[] {
   return React.Children.toArray(children).filter((c) => c);
 }
 
 export function convertToUnit(
   size: number,
   unit: "%" | "px" | "ratio" | "em" | "rem",
-  containerSize?: number,
+  containerSize?: number
 ) {
   switch (unit) {
     case "%":
