@@ -72,7 +72,7 @@ export function removeNullChildren(children: SplitPaneProps["children"]) {
 export function convertToUnit(
   size: number,
   unit: "%" | "px" | "ratio" | "em" | "rem",
-  containerSize?: number
+  containerSize?: number,
 ) {
   switch (unit) {
     case "%":

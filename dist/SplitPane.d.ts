@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface SplitPaneProps {
     children: any[];
     className?: string;
@@ -9,5 +8,5 @@ export interface SplitPaneProps {
     onResizeEnd?: (sizes: string[]) => void;
     allowResize?: boolean;
 }
-declare const SplitPane: ({ children, className, split, allowResize, onResizeStart, onResizeEnd, onChange, resizerSize, }: SplitPaneProps) => JSX.Element;
+declare const SplitPane: ({ children, className, split, allowResize, onResizeStart, onResizeEnd, onChange, resizerSize, }: SplitPaneProps) => import("react/jsx-runtime").JSX.Element;
 export default SplitPane;

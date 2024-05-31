@@ -12,5 +12,5 @@ export interface PaneProps {
     resizersSize?: number;
     size?: string;
 }
-declare const Pane: ({ children, className, setRef, index, ...rest }: PaneProps) => JSX.Element;
+declare const Pane: ({ children, className, setRef, index, ...rest }: PaneProps) => import("react/jsx-runtime").JSX.Element;
 export default Pane;
