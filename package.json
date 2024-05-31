@@ -54,7 +54,7 @@
   },
   "scripts": {
     "build": "tsup lib/main.ts --format cjs,esm --dts",
-    "release": "pnpm run build && changeset publish",
+    "release": "pnpm build && changeset publish",
     "dev": "vite",
     "lint": "run-s lint:*",
     "lint:ts": "tsc --project tsconfig.build.json --noEmit",
