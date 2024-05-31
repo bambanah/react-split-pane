@@ -1,5 +1,5 @@
 {
-  "name": "@bambanah/react-split-pane",
+  "name": "@propel-health/react-split-pane",
   "description": "React split-pane component",
   "main": "dist/main.js",
   "module": "dist/main.mjs",
