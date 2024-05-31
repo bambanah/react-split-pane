@@ -122,7 +122,7 @@ const SplitPane = ({
   const onDown = (
     newResizerIndex: number,
     clientX: number,
-    clientY: number
+    clientY: number,
   ) => {
     if (!allowResize) {
       return;
@@ -164,7 +164,7 @@ const SplitPane = ({
     const primaryMaxSizePx = Math.min(maxSizesPx[currResizerIndex], maxSize);
     const secondaryMaxSizePx = Math.min(
       maxSizesPx[currResizerIndex + 1],
-      maxSize
+      maxSize,
     );
 
     const moveOffsetPx =
@@ -197,7 +197,7 @@ const SplitPane = ({
         newSizes[currResizerIndex + idx] = convertToUnit(
           paneSize,
           unit,
-          splitPaneSizePx
+          splitPaneSizePx,
         );
       } else {
         updateRatio = true;
@@ -247,7 +247,7 @@ const SplitPane = ({
     const minSizesPx = minSizes.map((s) => convert(s, splitPaneSizePx));
     const maxSizesPx = maxSizes.map((s) => convert(s, splitPaneSizePx));
     const sizesPx = paneDimensions.map((d) =>
-      split === "vertical" ? d.width : d.height
+      split === "vertical" ? d.width : d.height,
     );
 
     dimensionsSnapshot.current = {
@@ -274,7 +274,7 @@ const SplitPane = ({
 
   function getPanePropMinMaxSize(
     children: SplitPaneProps["children"],
-    key: "minSize" | "maxSize"
+    key: "minSize" | "maxSize",
   ): string[] {
     return removeNullChildren(children).map((child) => {
       const value = child.props[key];

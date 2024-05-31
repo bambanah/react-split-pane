@@ -1,5 +1,24 @@
 import { jsx as fe } from "react/jsx-runtime";
 import te, { useRef as Pe, useDebugValue as jt, createElement as fn, useContext as ln, useState as Ft, useEffect as dn, cloneElement as pn } from "react";
+function kr(e) {
+  var t, r, n = "";
+  if (typeof e == "string" || typeof e == "number")
+    n += e;
+  else if (typeof e == "object")
+    if (Array.isArray(e)) {
+      var o = e.length;
+      for (t = 0; t < o; t++)
+        e[t] && (r = kr(e[t])) && (n && (n += " "), n += r);
+    } else
+      for (r in e)
+        e[r] && (n && (n += " "), n += r);
+  return n;
+}
+function Pr() {
+  for (var e, t, r = 0, n = "", o = arguments.length; r < o; r++)
+    (e = arguments[r]) && (t = kr(e)) && (n && (n += " "), n += t);
+  return n;
+}
 function gt(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
 }
@@ -53,10 +72,10 @@ function yn(e) {
     return o;
   };
 }
-function kr(e) {
+function Er(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-function Pr(e) {
+function _r(e) {
   if (e.__esModule)
     return e;
   var t = e.default;
@@ -77,7 +96,7 @@ function Pr(e) {
     });
   }), r;
 }
-var Er = {};
+var Cr = {};
 function je(e) {
   "@babel/helpers - typeof";
   return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? je = function(r) {
@@ -123,7 +142,7 @@ function Vt(e) {
     return e.lastIndexOf(t) === r;
   });
 }
-function _r(e) {
+function Ar(e) {
   for (var t = 0, r = arguments.length <= 1 ? 0 : arguments.length - 1; t < r; ++t) {
     var n = t + 1 < 1 || arguments.length <= t + 1 ? void 0 : arguments[t + 1];
     for (var o in n) {
@@ -138,7 +157,7 @@ function _r(e) {
           continue;
         }
         if (je(i) === "object") {
-          e[o] = _r({}, a, i);
+          e[o] = Ar({}, a, i);
           continue;
         }
       }
@@ -151,7 +170,7 @@ var kn = /-([a-z])/g, Pn = /^Ms/g, st = {};
 function En(e) {
   return e[1].toUpperCase();
 }
-function Cr(e) {
+function Or(e) {
   if (st.hasOwnProperty(e))
     return st[e];
   var t = e.replace(kn, En).replace(Pn, "ms");
@@ -161,7 +180,7 @@ var _n = /[A-Z]/g, Cn = /^ms-/, ct = {};
 function An(e) {
   return "-" + e.toLowerCase();
 }
-function Ar(e) {
+function zr(e) {
   if (ct.hasOwnProperty(e))
     return ct[e];
   var t = e.replace(_n, An);
@@ -169,19 +188,19 @@ function Ar(e) {
 }
 const On = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Ar
+  default: zr
 }, Symbol.toStringTag, { value: "Module" }));
 function Xe(e) {
-  return Ar(e);
+  return zr(e);
 }
-function Or(e, t) {
+function Rr(e, t) {
   return Xe(e) + ":" + t;
 }
 function zn(e) {
   var t = "";
   for (var r in e) {
     var n = e[r];
-    typeof n != "string" && typeof n != "number" || (t && (t += ";"), t += Or(r, n));
+    typeof n != "string" && typeof n != "number" || (t && (t += ";"), t += Rr(r, n));
   }
   return t;
 }
@@ -230,12 +249,12 @@ function Wn(e) {
   return Ce.hasOwnProperty(e);
 }
 var Bn = /^(ms|Webkit|Moz|O)/;
-function zr(e) {
+function $r(e) {
   var t = e.replace(Bn, "");
   return t.charAt(0).toLowerCase() + t.slice(1);
 }
 function jn(e) {
-  return zr(Cr(e));
+  return $r(Or(e));
 }
 function Fn(e, t) {
   return t.join(";" + Xe(e) + ":");
@@ -246,9 +265,9 @@ function Gn(e) {
 }
 const Vn = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  assignStyle: _r,
-  camelCaseProperty: Cr,
-  cssifyDeclaration: Or,
+  assignStyle: Ar,
+  camelCaseProperty: Or,
+  cssifyDeclaration: Rr,
   cssifyObject: zn,
   hyphenateProperty: Xe,
   isPrefixedProperty: $n,
@@ -256,20 +275,20 @@ const Vn = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   isUnitlessProperty: Wn,
   normalizeProperty: jn,
   resolveArrayValue: Fn,
-  unprefixProperty: zr,
+  unprefixProperty: $r,
   unprefixValue: Gn
-}, Symbol.toStringTag, { value: "Module" })), Hn = /* @__PURE__ */ Pr(Vn);
-Object.defineProperty(Er, "__esModule", {
+}, Symbol.toStringTag, { value: "Module" })), Hn = /* @__PURE__ */ _r(Vn);
+Object.defineProperty(Cr, "__esModule", {
   value: !0
 });
-var Un = Er.default = Zn, Yn = Hn, qn = /cross-fade\(/g, Xn = ["-webkit-", ""];
+var Un = Cr.default = Zn, Yn = Hn, qn = /cross-fade\(/g, Xn = ["-webkit-", ""];
 function Zn(e, t) {
   if (typeof t == "string" && !(0, Yn.isPrefixedValue)(t) && t.indexOf("cross-fade(") !== -1)
     return Xn.map(function(r) {
       return t.replace(qn, r + "cross-fade(");
     });
 }
-var Rr = {}, Ae = {};
+var Ir = {}, Ae = {};
 (function(e) {
   Object.defineProperty(e, "__esModule", {
     value: !0
@@ -279,11 +298,11 @@ var Rr = {}, Ae = {};
     return typeof n == "string" && t.test(n);
   }
 })(Ae);
-const Ct = /* @__PURE__ */ kr(Ae);
-Object.defineProperty(Rr, "__esModule", {
+const Ct = /* @__PURE__ */ Er(Ae);
+Object.defineProperty(Ir, "__esModule", {
   value: !0
 });
-var Kn = Rr.default = ro, Jn = Ae, Qn = eo(Jn);
+var Kn = Ir.default = ro, Jn = Ae, Qn = eo(Jn);
 function eo(e) {
   return e && e.__esModule ? e : { default: e };
 }
@@ -296,11 +315,11 @@ function ro(e, t) {
       });
     });
 }
-var $r = {};
-Object.defineProperty($r, "__esModule", {
+var Mr = {};
+Object.defineProperty(Mr, "__esModule", {
   value: !0
 });
-var no = $r.default = co, oo = Ae, io = ao(oo);
+var no = Mr.default = co, oo = Ae, io = ao(oo);
 function ao(e) {
   return e && e.__esModule ? e : { default: e };
 }
@@ -311,11 +330,11 @@ function co(e, t) {
       return t.replace(/image-set\(/g, r + "image-set(");
     });
 }
-var Ir = {};
-Object.defineProperty(Ir, "__esModule", {
+var Nr = {};
+Object.defineProperty(Nr, "__esModule", {
   value: !0
 });
-var uo = Ir.default = ho, fo = ["-webkit-", "-moz-", ""], lo = {
+var uo = Nr.default = ho, fo = ["-webkit-", "-moz-", ""], lo = {
   maxHeight: !0,
   maxWidth: !0,
   width: !0,
@@ -336,8 +355,8 @@ function ho(e, t) {
       return r + t;
     });
 }
-var Mr = {}, At = {};
-const mo = /* @__PURE__ */ Pr(On);
+var Tr = {}, At = {};
+const mo = /* @__PURE__ */ _r(On);
 (function(e) {
   Object.defineProperty(e, "__esModule", {
     value: !0
@@ -350,7 +369,7 @@ const mo = /* @__PURE__ */ Pr(On);
     return (0, r.default)(i);
   }
 })(At);
-const go = /* @__PURE__ */ kr(At);
+const go = /* @__PURE__ */ Er(At);
 var Ot = {};
 Object.defineProperty(Ot, "__esModule", {
   value: !0
@@ -359,10 +378,10 @@ Ot.default = yo;
 function yo(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
 }
-Object.defineProperty(Mr, "__esModule", {
+Object.defineProperty(Tr, "__esModule", {
   value: !0
 });
-var vo = Mr.default = Co, bo = At, So = zt(bo), wo = Ae, xo = zt(wo), ko = Ot, Xt = zt(ko);
+var vo = Tr.default = Co, bo = At, So = zt(bo), wo = Ae, xo = zt(wo), ko = Ot, Xt = zt(ko);
 function zt(e) {
   return e && e.__esModule ? e : { default: e };
 }
@@ -715,25 +734,6 @@ function or(e, t, r) {
       return (e * 100).toFixed(0);
   }
 }
-function Nr(e) {
-  var t, r, n = "";
-  if (typeof e == "string" || typeof e == "number")
-    n += e;
-  else if (typeof e == "object")
-    if (Array.isArray(e)) {
-      var o = e.length;
-      for (t = 0; t < o; t++)
-        e[t] && (r = Nr(e[t])) && (n && (n += " "), n += r);
-    } else
-      for (r in e)
-        e[r] && (n && (n += " "), n += r);
-  return n;
-}
-function Tr() {
-  for (var e, t, r = 0, n = "", o = arguments.length; r < o; r++)
-    (e = arguments[r]) && (t = Nr(e)) && (n && (n += " "), n += t);
-  return n;
-}
 function si({
   split: e = "vertical",
   initialSize: t = "1",
@@ -772,7 +772,7 @@ const ir = ({ children: e, className: t, setRef: r, index: n, ...o }) => {
   return /* @__PURE__ */ fe(
     "div",
     {
-      className: Tr(t, "react-split-pane__Pane"),
+      className: Pr(t, "react-split-pane__Pane"),
       style: i,
       ref: a,
       children: e
@@ -2108,7 +2108,7 @@ const cn = be.div`
   return /* @__PURE__ */ fe(
     r === "vertical" ? xa : wa,
     {
-      className: Tr(t, "react-split-pane__SplitPane"),
+      className: Pr(t, "react-split-pane__SplitPane"),
       "data-type": "SplitPane",
       "data-split": r,
       ref: c,

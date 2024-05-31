@@ -2,9 +2,9 @@ language: node_js
 sudo: required
 dist: trusty
 node_js:
-- stable
+  - stable
 script:
-- npm test
+  - npm test
 after_script:
-- npm run test:coverage
-- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run demo:publish || false'
+  - npm run test:coverage
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run demo:publish || false'

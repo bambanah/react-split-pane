@@ -1,7 +1,7 @@
+import clsx from "clsx";
 import { prefix } from "inline-style-prefixer";
 import React from "react";
-import { convert, convertSizeToCssValue, getUnit } from "./utils";
-import clsx from "clsx";
+import { convertSizeToCssValue, getUnit } from "./utils";
 
 export interface PaneProps {
   children: React.ReactNode | React.ReactNode[];
@@ -49,7 +49,7 @@ function PaneStyle({
       style.flexGrow = 0;
       style[styleProp.size] = convertSizeToCssValue(
         value.toString(),
-        resizersSize
+        resizersSize,
       );
       break;
   }

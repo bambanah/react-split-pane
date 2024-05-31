@@ -1,6 +1,5 @@
-import SplitPane from "../lib/SplitPane";
+import SplitPane, { Pane } from "../";
 import "./App.css";
-import Pane from "../lib/Pane";
 
 function App() {
   return (
